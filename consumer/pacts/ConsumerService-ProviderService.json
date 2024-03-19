@@ -1,0 +1,99 @@
+{
+  "consumer": {
+    "name": "ConsumerService"
+  },
+  "interactions": [
+    {
+      "description": "get item with ID 3",
+      "providerState": "item with ID 3 does not exist",
+      "request": {
+        "method": "GET",
+        "path": "/item/3"
+      },
+      "response": {
+        "status": 404
+      }
+    },
+    {
+      "description": "get item with ID 2",
+      "providerState": "item with id 1 exists",
+      "request": {
+        "method": "GET",
+        "path": "/item/2"
+      },
+      "response": {
+        "body": {
+          "commodity": "Anime",
+          "id": "2",
+          "name": "Demon Slayer"
+        },
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "get all items",
+      "providerState": "items exist",
+      "request": {
+        "method": "GET",
+        "path": "/items"
+      },
+      "response": {
+        "body": [
+          {
+            "commodity": "Book",
+            "id": "1",
+            "name": "Arsene Lupin, Gentleman Burglar"
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type",
+            "min": 1
+          }
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "get all items",
+      "providerState": "no items exist",
+      "request": {
+        "method": "GET",
+        "path": "/items"
+      },
+      "response": {
+        "body": [],
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "12.1.0"
+    },
+    "pactRust": {
+      "ffi": "0.4.16",
+      "models": "1.1.19"
+    },
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  },
+  "provider": {
+    "name": "ProviderService"
+  }
+}
