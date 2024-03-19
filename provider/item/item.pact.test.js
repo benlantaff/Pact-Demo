@@ -29,14 +29,14 @@ describe("Pact Verification", () => {
         },
         "item exist": () => {
           controller.repository.items = new Map([
-            ["09", new Item("1", "Book", "Arsene Lupin, Gentleman Burglar")],
-            ["10", new Item("2", "Anime", "Demon Slayer")],
+            ["1", new Item("1", "Book", "Arsene Lupin, Gentleman Burglar")],
+            ["2", new Item("2", "Anime", "Demon Slayer")],
           ]);
         },
         "no items exist": () => {
           controller.repository.items = new Map();
         },
-        "item with ID 11 does not exist": () => {
+        "item with ID 3 does not exist": () => {
           controller.repository.items = new Map();
         },
       },

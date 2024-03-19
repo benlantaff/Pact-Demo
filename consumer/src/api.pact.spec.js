@@ -89,7 +89,7 @@ describe("API test", () => {
     test("id 1 exists", async () => {
       // Pact interactions
       await provider.addInteraction({
-        states: [{ description: "item with id 1 exists" }],
+        states: [{ description: "item with id 2 exists" }],
         uponReceiving: "get item with ID 2",
         withRequest: {
           method: "GET",
